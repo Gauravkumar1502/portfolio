@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:host{
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 1rem;
+}
+.version{
+    font-weight: bolder;
+}
+app-message{
+    margin-top: 10px;
+    background-color: rebeccapurple;
+}
+.intro{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: min(2rem, 2vw);
+}

@@ -1,0 +1,31 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+}
+.title {
+    font-weight: 400;
+    font-size: clamp(16px, 3vw, 32px);
+    color: var(--sys-primary);
+}
+.name {
+    font-size: clamp(28px, 5vw, 56px);
+    color: var(--sys-on-background);
+}
+.fade-text {
+    opacity: .7;
+}
+.description {
+    font-size: clamp(16px, 3vw, 24px);
+    color: var(--sys-on-background);
+    line-height: 1.5;
+    text-wrap: balance;
+    max-width: 1000px;
+}
+.intro {
+    height: 80dvh;
+    padding: .5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}

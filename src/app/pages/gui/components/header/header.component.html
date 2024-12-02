@@ -1,0 +1,52 @@
+<header>
+    <h1>
+        <a href="/portfolio" class="logo" aria>G K</a>
+    </h1>
+    <nav>
+        @if (isSmallScreen()) {
+        <button mat-icon-button aria-label="Toggle menu">
+            <mat-icon fontIcon="menu"></mat-icon>
+        </button>
+        } @else {
+        <ul>
+            <li><a href="#">.about( )</a></li>
+            <li><a href="#">.experience( )</a></li>
+            <li><a href="#">.projects( )</a></li>
+            <li><a href="#">.education( )</a></li>
+            <!-- <li><a href="#">.services( )</a></li>
+                    <li><a href="#">.blogs( )</a></li> -->
+            <li><a href="#">.contact( )</a></li>
+            <!-- <li><a href="#">.certificates( )</a></li>
+                <li><a href="#">.resume( )</a></li> -->
+            <li class="theme-switcher" (click)="toggleTheme()">
+                <mat-icon matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme" matTooltipPosition="below"
+                    [fontIcon]="currentIcon"></mat-icon>
+            </li>
+        </ul>
+        <div appFixedPosition [position]="positions.BOTTOM_LEFT">
+            <a class="email-link" [href]="'mailto:' + email" target="_blank">{{ email }}</a>
+        </div>
+        <div appFixedPosition [position]="positions.BOTTOM_RIGHT">
+            <ul class="social-links">
+                <li matTooltip="Switch to Terminal Portfolio" matTooltipPosition="left">
+                    <a [routerLink]="'/terminal-portfolio'"><mat-icon fontIcon="code"></mat-icon></a></li>
+                <li matTooltip="GitHub" matTooltipPosition="left">
+                    <a href="https://github.com/Gauravkumar1502"
+                    target="_blank"><mat-icon svgIcon="github"></mat-icon></a></li>
+                <li matTooltip="LinkedIn" matTooltipPosition="left">
+                    <a href="https://www.linkedin.com/in/gauravkumar15"
+                    target="_blank"><mat-icon svgIcon="linkedin"></mat-icon></a></li>
+                <li matTooltip="Twitter" matTooltipPosition="left">
+                    <a href="https://x.com/Gauravkuma_r"
+                    target="_blank"><mat-icon svgIcon="twitter"></mat-icon></a></li>
+                <li matTooltip="HackerRank" matTooltipPosition="left">
+                    <a href="https://www.hackerrank.com/profile/gauravkumar15021"
+                    target="_blank"><mat-icon svgIcon="hacker_rank"></mat-icon></a></li>
+                <li matTooltip="Codepen" matTooltipPosition="left">
+                    <a href="https://codepen.io/gauravkumar1502"
+                    target="_blank"><mat-icon svgIcon="codepen"></mat-icon></a></li>
+            </ul>
+        </div>
+        }
+    </nav>
+</header>

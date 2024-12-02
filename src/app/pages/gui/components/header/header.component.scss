@@ -1,0 +1,102 @@
+:host {
+    position: sticky;
+    top: 0;
+    left: 0;
+    // padding-top: 1rem;
+    // variable for ::after bar height
+    z-index: 1000;
+    --bar-height: 150px;
+    --translateY: -3px;
+}
+
+a{
+    color: var(--sys-primary);
+    text-decoration: none;
+}
+header {
+    background-color: var(--sys-background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+
+    h1 {
+        font-size: clamp(16px, 3vw, 32px);
+        font-weight: bolder;
+        text-shadow: 2px 3px 3px var(--sys-on-background);
+    }
+
+    nav > ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        list-style: none;
+        font-weight: lighter;
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            &:hover {
+                transform: rotateY(180deg);
+            }
+        }
+        li > a {
+            font-size: clamp(16px, 1.5vw, 22px);
+            color: var(--sys-primary);
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                color: var(--sys-on-background);
+                text-shadow: 2px 4px 7px var(--sys-on-background);
+            }
+        }
+    }
+}
+
+.email-link {
+    writing-mode: vertical-rl;
+    font-weight: 400;
+    color: var(--sys-on-background);
+    letter-spacing: 1.2px;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        transform: translateY(var(--translateY));
+        color: var(--sys-primary);
+    }
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: var(--bar-height);
+        margin-top: 1rem;
+        background-color: var(--sys-on-background);
+    }
+}
+
+.social-links {
+    padding-right: .5rem;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    list-style: none;
+    margin: 0;
+    a {
+        writing-mode: horizontal-tb;
+        color: var(--sys-on-background);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            transform: translateY(var(--translateY));
+            color: var(--sys-primary);
+        }
+    }
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: var(--bar-height);
+        margin-top: 1rem;
+        background-color: var(--sys-on-background);
+    }
+}
