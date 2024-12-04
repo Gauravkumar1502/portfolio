@@ -5,11 +5,12 @@ import { FixedPositionDirective, Positions } from '../../directives/fixed-positi
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from "./components/header/header.component";
 import { IntroComponent } from "./components/intro/intro.component";
+import { AboutMeComponent } from "./components/about-me/about-me.component";
 
 @Component({
   selector: 'app-gui',
   standalone: true,
-  imports: [RouterLink, FixedPositionDirective, FormsModule, HeaderComponent, IntroComponent],
+  imports: [RouterLink, FixedPositionDirective, FormsModule, HeaderComponent, IntroComponent, AboutMeComponent],
   templateUrl: './gui.component.html',
   styleUrl: './gui.component.scss'
 })

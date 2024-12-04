@@ -8,4 +8,8 @@ main{
     padding: .5rem 1rem;
     font-family: 'SF Pro Text',-apple-system,system-ui,sans-serif;
     letter-spacing: .5px;
+    > * {
+        // display: block;
+        // outline: 1px solid red;
+    }
 }

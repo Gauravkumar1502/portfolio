@@ -18,8 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 1rem;
-
+    padding-inline: 1rem;
     h1 {
         font-size: clamp(16px, 3vw, 32px);
         font-weight: bolder;
@@ -36,17 +35,19 @@ header {
             display: flex;
             align-items: center;
             cursor: pointer;
+            color: var(--sys-primary);
             transition: all 0.5s ease-in-out;
-            &:hover {
+            &:hover, &:focus {
                 transform: rotateY(180deg);
+                scale: 1.2;
             }
         }
         li > a {
             font-size: clamp(16px, 1.5vw, 22px);
-            color: var(--sys-primary);
+            // color: var(--sys-primary);
             text-decoration: none;
             transition: all 0.3s ease-in-out;
-            &:hover {
+            &:hover, &:focus {
                 color: var(--sys-on-background);
                 text-shadow: 2px 4px 7px var(--sys-on-background);
             }
@@ -60,7 +61,7 @@ header {
     color: var(--sys-on-background);
     letter-spacing: 1.2px;
     transition: all 0.3s ease-in-out;
-    &:hover {
+    &:hover, &:focus {
         transform: translateY(var(--translateY));
         color: var(--sys-primary);
     }
@@ -86,7 +87,7 @@ header {
         writing-mode: horizontal-tb;
         color: var(--sys-on-background);
         transition: all 0.3s ease-in-out;
-        &:hover {
+        &:hover, &:focus {
             transform: translateY(var(--translateY));
             color: var(--sys-primary);
         }

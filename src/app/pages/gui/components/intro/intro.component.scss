@@ -1,31 +1,75 @@
-*, *::before, *::after{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
 }
-.title {
-    font-weight: 400;
-    font-size: clamp(16px, 3vw, 32px);
-    color: var(--sys-primary);
-}
-.name {
-    font-size: clamp(28px, 5vw, 56px);
-    color: var(--sys-on-background);
-}
-.fade-text {
-    opacity: .7;
-}
-.description {
-    font-size: clamp(16px, 3vw, 24px);
-    color: var(--sys-on-background);
-    line-height: 1.5;
-    text-wrap: balance;
-    max-width: 1000px;
-}
+
 .intro {
-    height: 80dvh;
+    min-height: 95dvh;
     padding: .5rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+
+    .heading {
+        font-weight: 700;
+        font-size: clamp(16px, 3vw, 32px);
+        color: var(--sys-primary);
+    }
+
+    .name {
+        font-size: clamp(24px, 5vw, 56px);
+        color: var(--sys-on-background);
+    }
+    .title {
+        font-size: clamp(16px, 3vw, 32px);
+        color: var(--sys-secondary);
+    }
+
+    .fade-text {
+        opacity: .7;
+    }
+
+    .description {
+        font-size: clamp(16px, 2.5vw, 24px);
+        color: var(--sys-on-background);
+        text-wrap: balance;
+        max-width: 1000px;
+        span {
+            font-weight: 400;
+            display: inline-block;
+            color: var(--sys-secondary);
+            cursor: pointer;
+            &::after{
+                content: '';
+                display: block;
+                width: 0;
+                height: 2px;
+                background: var(--sys-secondary);
+                transition: width .3s ease-in-out;
+            }
+            &:hover::after{
+                width: 100%;
+            }
+        }
+    }
+
+    button {
+        margin-top: 1rem;
+        width: fit-content;
+        background: var(--sys-background);
+        border-radius: var(--sys-border-radius);
+        border: 1px solid var(--sys-primary);
+        cursor: pointer;
+        padding: .5rem 1.5rem;
+        font-size: clamp(12px, 2.5vw, 24px);
+        color: var(--sys-primary);
+        transition: all .3s;
+        &:hover, &:focus{
+            transform: translate(-2px, -3px);
+            box-shadow: 4px 4px 0 0 var(--sys-primary);
+        }
+    }
 }
