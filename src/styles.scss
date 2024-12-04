@@ -38,7 +38,7 @@ $Portfolio-theme: mat.define-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html {
-  --sys-primary: rgb(151 217 69);
+  --sys-primary: rgb(150, 217, 69);
   --sys-surface-tint: rgb(151 217 69);
   --sys-on-primary: rgb(31 55 0);
   --sys-primary-container: rgb(79 130 0);
@@ -87,15 +87,20 @@ html {
   --sys-surface-container: rgb(29 33 23);
   --sys-surface-container-high: rgb(39 43 33);
   --sys-surface-container-highest: rgb(50 54 43);
+
+  --sys-border-radius: 0.25rem;
   scrollbar-width: thin;
   height: 100%; 
 }
-
+*:focus {
+  outline-offset: 4px;
+}
 body {
-  margin: 0; 
+  margin: 0;
+  line-height: 1.5;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--sys-background);
-  color: var(--sys-primary);
+  color: var(--sys-on-background);
 }
 @keyframes appear {
   from {
