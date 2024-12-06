@@ -1,0 +1,38 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build:prod
+
+      # The 404.htmlis a copy of index.html, but before index.html is built. So it doesn't contain the proper script tags to load Angular, links to CSS files, ... I'd say to do a cp dist/browser/index.html dist/browser/404.html after ng build:prod in your GitHub Action
+      # And before calling the pages publish GitHub Action
+
+      - name: Copy index.html to 404.html
+        run: cp dist/browser/index.html dist/browser/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/browser
+          token: ${{ secrets.GH_TOKEN }}
+          branch: gh-pages
+          clean: true
