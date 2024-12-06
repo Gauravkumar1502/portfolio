@@ -90,8 +90,13 @@ html {
 
   --sys-border-radius: 0.25rem;
   scrollbar-width: thin;
-  height: 100%; 
+  scroll-behavior: smooth;
+  height: 100%;
+  scrollbar-color: 
+    var(--sys-on-background)
+    var(--sys-background);
 }
+
 *:focus {
   outline-offset: 4px;
 }
