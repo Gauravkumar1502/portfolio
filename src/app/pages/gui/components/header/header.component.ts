@@ -1,12 +1,11 @@
 import { Component, HostListener, inject, Input, signal } from '@angular/core';
-import {MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import {MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { FixedPositionDirective, Positions } from '../../../../directives/fixed-position.directive';
 import {MatTooltipModule, TooltipPosition} from '@angular/material/tooltip';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { DomSanitizer } from '@angular/platform-browser';
 import { AppTheme, ThemeService } from '../../../../services/theme.service';
 import { RouterLink } from '@angular/router';
 
@@ -29,18 +28,10 @@ export class HeaderComponent {
     body: 'Hello Gaurav,'
   };
   @Input() drawer!: MatDrawer;
-  private iconRegistry = inject(MatIconRegistry);
-  private sanitizer = inject(DomSanitizer);
   private themeService = inject(ThemeService);
   constructor() {
     this.isDarkMode.set(this.themeService.isDarkMode('gui'));
     this.isSmallScreen.set(window.innerWidth < 768);
-    this.iconRegistry
-      .addSvgIcon('github', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/github-fill.svg'))
-      .addSvgIcon('linkedin', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/linkedin-fill.svg'))
-      .addSvgIcon('codepen', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/codepen-fill.svg'))
-      .addSvgIcon('hacker_rank', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/hacker_rank-fill.svg'))
-      .addSvgIcon('twitter', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/twitter-fill.svg'));
   }
   
   get currentIcon(): string {
