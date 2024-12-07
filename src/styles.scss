@@ -96,11 +96,23 @@ html {
     var(--sys-on-background)
     var(--sys-background);
 }
-
 *:focus {
   outline-offset: 4px;
 }
 body {
+  // used for setting header background color
+  --mat-toolbar-container-background-color: var(--sys-background);
+
+  // used for setting dialog background color
+  --mdc-dialog-container-color: var(--sys-background);
+  --mdc-dialog-subhead-color: var(--sys-primary);
+  --mdc-dialog-supporting-text-color: var(--sys-on-background);
+  
+  // used for setting sidenav background color 
+  --mat-sidenav-container-background-color: var(--sys-background);
+  --mat-sidenav-content-background-color: var(--sys-background);
+  --mat-sidenav-container-text-color: var(--sys-on-background);
+  
   margin: 0;
   line-height: 1.5;
   font-family: Roboto, "Helvetica Neue", sans-serif;
