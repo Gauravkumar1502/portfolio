@@ -1,18 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
+  HostListener,
   inject,
   signal,
-  Signal,
-  WritableSignal,
 } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
-import { RouterLink } from '@angular/router';
-import {
-  FixedPositionDirective,
-  Positions,
-} from '../../directives/fixed-position.directive';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { IntroComponent } from './components/intro/intro.component';
@@ -32,8 +25,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   selector: 'app-gui',
   standalone: true,
   imports: [
-    RouterLink,
-    FixedPositionDirective,
     FormsModule,
     HeaderComponent,
     IntroComponent,
@@ -45,11 +36,18 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   styleUrl: './gui.component.scss',
 })
 export class GuiComponent {
-  positions = Positions;
+  isSmallScreen = signal(false);
 
   constructor(private themeService: ThemeService, private dialog: MatDialog) {
     this.themeService.initTheme('gui');
     this.themeService.removeTheme('terminal');
+    this.isSmallScreen.set(window.innerWidth < 768);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    const width = (event.target as Window).innerWidth;
+    this.isSmallScreen.set(width < 768);
   }
 
   ngOnInit() {
@@ -80,6 +78,7 @@ export class GuiComponent {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class PortfolioWorkInProgressDialog {
   readonly dialogRef = inject(MatDialogRef<PortfolioWorkInProgressDialog>);
 }
