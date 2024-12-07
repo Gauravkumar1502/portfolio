@@ -41,13 +41,14 @@ export class GuiComponent {
   constructor(private themeService: ThemeService, private dialog: MatDialog) {
     this.themeService.initTheme('gui');
     this.themeService.removeTheme('terminal');
-    this.isSmallScreen.set(window.innerWidth < 768);
+    this.isSmallScreen.set(window.innerWidth <= 768);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     const width = (event.target as Window).innerWidth;
-    this.isSmallScreen.set(width < 768);
+    console.log(width<768);
+    this.isSmallScreen.set(width <= 768);
   }
 
   ngOnInit() {

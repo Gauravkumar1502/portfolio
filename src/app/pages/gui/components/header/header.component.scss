@@ -1,23 +1,26 @@
 @use '@angular/material' as mat;
 :host {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
     // padding-top: 1rem;
     // variable for ::after bar height
     z-index: 1000;
     --bar-height: 150px;
+    --bar-height: 20vh;
     --translateY: -3px;
+}
+
+:root {
+    @include mat.toolbar-overrides((
+        container-background-color: var(--sys-background),
+    ));
 }
 
 a{
     color: var(--sys-primary);
     text-decoration: none;
-}
-:root {
-    @include mat.toolbar-overrides((
-      container-background-color: var(--sys-background),
-    ));
 }
 header > mat-toolbar {
     background-color: var(--sys-background);
@@ -70,7 +73,6 @@ header > mat-toolbar {
     writing-mode: vertical-rl;
     font-weight: 400;
     color: var(--sys-on-background);
-    letter-spacing: 1.2px;
     transition: all 0.3s ease-in-out;
     &:hover, &:focus {
         transform: translateY(var(--translateY));

@@ -6,7 +6,8 @@
 }
 
 .intro {
-    min-height: 95dvh;
+    margin-top: var(--mat-toolbar-mobile-height);
+    min-height: 95vh;
     padding: .5rem 3rem;
     display: flex;
     flex-direction: column;
