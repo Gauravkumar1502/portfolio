@@ -14,17 +14,19 @@
     gap: 1rem;
 
     .heading {
+        font-family: "Mogra", system-ui;
         font-weight: 700;
-        font-size: clamp(16px, 3vw, 32px);
+        font-size: clamp(16px, 3.25vw, 32px);
         color: var(--sys-primary);
     }
 
     .name {
         font-size: clamp(24px, 5vw, 56px);
+        font-family: "Mogra", system-ui;
         color: var(--sys-on-background);
     }
     .title {
-        font-size: clamp(16px, 3vw, 32px);
+        font-size: clamp(20px, 3.25vw, 32px);
         color: var(--sys-secondary);
     }
 
