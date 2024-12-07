@@ -80,8 +80,8 @@ export class GuiComponent {
     return !this.isDarkMode() ? 'dark_mode' : 'light_mode';
   }
   
-  toggleTheme(): void {
-    this.isDarkMode.set(!this.isDarkMode());
+  toggleTheme(event: boolean): void {
+    this.isDarkMode.set(event);
     this.themeService.setTheme('gui', this.isDarkMode() ? 
       AppTheme.GUI_DARK : AppTheme.GUI_LIGHT);
   }

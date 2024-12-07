@@ -1,10 +1,11 @@
 <mat-drawer-container>
   <section>
     <app-header [drawer]="drawer" 
-      [isSmallScreen]="isSmallScreen()" 
-      [navLinks]="navLinks()"/>
+      [isSmallScreen]="isSmallScreen()"
+      [isDarkMode]="isDarkMode()"
+      [navLinks]="navLinks()"
+      (themeToggled)="toggleTheme($event)"/>
     <main>
-      <!-- <button [routerLink]="'/terminal-portfolio'">Switch to CLI</button> -->
       <app-intro />
       <app-about-me id="about-me"/>
     </main>
@@ -25,8 +26,9 @@
                 </a></li>
             <!-- } -->
         }
-        <li class="theme-switcher" >
-            <a (click)="toggleTheme();" matTooltipPosition="above"
+        <li class="theme-switcher">
+            <a (click)="toggleTheme(!isDarkMode())" 
+              matTooltipPosition="above"
               matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme">
                 .switchTo(<mat-icon [fontIcon]="currentIcon" />)
             </a>

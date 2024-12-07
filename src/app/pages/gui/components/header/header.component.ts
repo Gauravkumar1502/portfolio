@@ -1,11 +1,10 @@
-import { Component, HostListener, inject, input, signal } from '@angular/core';
+import { Component, HostListener, inject, input, output, signal } from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { FixedPositionDirective, Positions } from '../../../../directives/fixed-position.directive';
 import {MatTooltipModule, TooltipPosition} from '@angular/material/tooltip';
-import { AppTheme, ThemeService } from '../../../../services/theme.service';
 import { RouterLink } from '@angular/router';
 
 interface SocialLink {
@@ -28,10 +27,11 @@ export class HeaderComponent {
   drawer = input.required<MatDrawer>();
   isSmallScreen = input.required<boolean>();
   navLinks = input.required<{ label: string, fragment: string, display: boolean }[]>();
+  isDarkMode = input.required<boolean>();
 
-  isDarkMode = signal(false);
+  themeToggled = output<boolean>();
+
   positions = Positions;
-
   socialLinks: SocialLink[] = [
     { 
       tooltip: 'Switch to Terminal Portfolio', 
@@ -82,10 +82,8 @@ export class HeaderComponent {
     subject: 'Hello',
     body: 'Hi Gaurav,'
   };
-  private themeService = inject(ThemeService);
 
   constructor() {
-    this.isDarkMode.set(this.themeService.isDarkMode('gui'));
   }
   
   get currentIcon(): string {
@@ -93,9 +91,7 @@ export class HeaderComponent {
   }
   
   toggleTheme(): void {
-    this.isDarkMode.set(!this.isDarkMode());
-    this.themeService.setTheme('gui', this.isDarkMode() ? 
-      AppTheme.GUI_DARK : AppTheme.GUI_LIGHT);
+    this.themeToggled.emit(!this.isDarkMode());
   }
 }
 
