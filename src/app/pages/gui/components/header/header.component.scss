@@ -19,7 +19,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-inline: 1rem;
+    box-shadow: 0px 2px 3px 0px var(--sys-surface-container-highest);
     h1 {
+        margin: 0;
         font-size: clamp(16px, 3vw, 32px);
         font-weight: bolder;
         text-shadow: 2px 3px 3px var(--sys-on-background);
