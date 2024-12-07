@@ -112,7 +112,11 @@ body {
   --mat-sidenav-container-background-color: var(--sys-background);
   --mat-sidenav-content-background-color: var(--sys-background);
   --mat-sidenav-container-text-color: var(--sys-on-background);
-  
+  --mat-sidenav-content-text-color: var(--sys-on-background);
+
+  // used for setting icon button color
+  --mdc-icon-button-icon-color: var(--sys-primary);
+
   margin: 0;
   line-height: 1.5;
   font-family: Roboto, "Helvetica Neue", sans-serif;
