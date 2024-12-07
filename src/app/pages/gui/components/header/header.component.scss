@@ -15,14 +15,6 @@ a{
     color: var(--sys-primary);
     text-decoration: none;
 }
-mat-toolbar{
-    span {
-        margin: 0;
-        font-size: clamp(16px, 3vw, 32px);
-        font-weight: bolder;
-        text-shadow: 2px 3px 3px var(--sys-on-background);
-    }
-}
 :root {
     @include mat.toolbar-overrides((
       container-background-color: var(--sys-background),
