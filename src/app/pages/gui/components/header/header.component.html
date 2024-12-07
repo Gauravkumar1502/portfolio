@@ -6,20 +6,19 @@
         <nav>
             @if (isSmallScreen()) {
             <button mat-icon-button aria-label="Toggle menu">
-                <mat-icon (click)="drawer.toggle()" fontIcon="menu"></mat-icon>
-                <!-- <mat-icon fontIcon="menu"></mat-icon> -->
+                <mat-icon (click)="drawer.toggle()" fontIcon="menu" color="var(--sys-primary)"></mat-icon>
             </button>
             } @else {
             <ul>
-                <li><a routerLink="." fragment="about-me">.aboutMe( )</a></li>
-                <li><a href="">.experience( )</a></li>
-                <li><a href="">.projects( )</a></li>
-                <li><a href="">.education( )</a></li>
-                <!-- <li><a href="#">.services( )</a></li>
-                        <li><a href="#">.blogs( )</a></li> -->
-                <li><a href="">.contact( )</a></li>
-                <!-- <li><a href="#">.certificates( )</a></li>
-                    <li><a href="#">.resume( )</a></li> -->
+                <li><a routerLink="." fragment="about-me">.aboutMe()</a></li>
+                <li><a href="">.experience()</a></li>
+                <li><a href="">.projects()</a></li>
+                <li><a href="">.education()</a></li>
+                <!-- <li><a href="#">.services()</a></li>
+                        <li><a href="#">.blogs()</a></li> -->
+                <li><a href="">.contact()</a></li>
+                <!-- <li><a href="#">.certificates()</a></li>
+                    <li><a href="#">.resume()</a></li> -->
                 <li class="theme-switcher" (click)="toggleTheme()">
                     <mat-icon matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme" matTooltipPosition="below"
                         [fontIcon]="currentIcon"></mat-icon>
