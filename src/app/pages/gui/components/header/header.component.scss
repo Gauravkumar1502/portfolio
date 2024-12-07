@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 :host {
     position: sticky;
     top: 0;
@@ -7,13 +8,27 @@
     z-index: 1000;
     --bar-height: 150px;
     --translateY: -3px;
+    --mat-toolbar-container-background-color: var(--sys-background),
 }
 
 a{
     color: var(--sys-primary);
     text-decoration: none;
 }
-header {
+mat-toolbar{
+    span {
+        margin: 0;
+        font-size: clamp(16px, 3vw, 32px);
+        font-weight: bolder;
+        text-shadow: 2px 3px 3px var(--sys-on-background);
+    }
+}
+:root {
+    @include mat.toolbar-overrides((
+      container-background-color: var(--sys-background),
+    ));
+}
+header > mat-toolbar {
     background-color: var(--sys-background);
     display: flex;
     justify-content: space-between;
