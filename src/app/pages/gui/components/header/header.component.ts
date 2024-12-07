@@ -1,8 +1,8 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, Input, signal } from '@angular/core';
 import {MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
 import { FixedPositionDirective, Positions } from '../../../../directives/fixed-position.directive';
 import {MatTooltipModule, TooltipPosition} from '@angular/material/tooltip';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -28,6 +28,7 @@ export class HeaderComponent {
     subject: 'Hello',
     body: 'Hello Gaurav,'
   };
+  @Input() drawer!: MatDrawer;
   private iconRegistry = inject(MatIconRegistry);
   private sanitizer = inject(DomSanitizer);
   private themeService = inject(ThemeService);

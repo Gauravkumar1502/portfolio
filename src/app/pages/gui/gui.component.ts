@@ -26,6 +26,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-gui',
@@ -37,6 +38,8 @@ import { MatButtonModule } from '@angular/material/button';
     HeaderComponent,
     IntroComponent,
     AboutMeComponent,
+    MatButtonModule,
+    MatSidenavModule,
   ],
   templateUrl: './gui.component.html',
   styleUrl: './gui.component.scss',

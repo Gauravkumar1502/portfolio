@@ -6,7 +6,8 @@
         <nav>
             @if (isSmallScreen()) {
             <button mat-icon-button aria-label="Toggle menu">
-                <mat-icon fontIcon="menu"></mat-icon>
+                <mat-icon (click)="drawer.toggle()" fontIcon="menu"></mat-icon>
+                <!-- <mat-icon fontIcon="menu"></mat-icon> -->
             </button>
             } @else {
             <ul>

@@ -1,8 +1,14 @@
-<section>
-  <app-header />
-  <main>
-    <!-- <button [routerLink]="'/terminal-portfolio'">Switch to CLI</button> -->
-    <app-intro />
-    <app-about-me id="about-me"/>
-  </main>
-</section>
+<mat-drawer-container>
+  <section>
+    <app-header [drawer]="drawer"/>
+    <main>
+      <!-- <button [routerLink]="'/terminal-portfolio'">Switch to CLI</button> -->
+      <app-intro />
+      <app-about-me id="about-me"/>
+    </main>
+  </section>
+  <mat-drawer #drawer class="sidenav" mode="over" position="end">
+    <p>Auto-resizing sidenav</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor suscipit accumsan.</p>
+  </mat-drawer>
+</mat-drawer-container>
