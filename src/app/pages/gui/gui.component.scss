@@ -14,6 +14,50 @@ main{
     }
 }
 mat-drawer {
-    padding: 1rem;
+    width: max-content;
+    padding: 1rem 1.5rem;
     height: 100vh;
+    color: var(--sys-primary);
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: .51rem;
+        height: 100%;
+        .drawer-header {
+            padding-right: .5rem;
+            text-align: right;
+        }
+        ul {
+            height: 100%;
+            margin-top: 1rem;
+            padding-left: 1rem;
+            list-style: none;
+            font-weight: lighter;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-family: 'Fira Code', 'SF Pro Text',-apple-system,system-ui,sans-serif;
+            // select all a tags without class attribute
+            li > a:not([class]) {
+                text-decoration: none;
+                font-size: clamp(16px, 1.5vw, 22px);
+                color: var(--sys-primary);
+                letter-spacing: normal;
+                transition: all 0.3s ease-in-out;
+                &:hover, &:focus {
+                    color: var(--sys-on-background);
+                    text-shadow: 2px 4px 7px var(--sys-on-background);
+                }
+            }
+            .theme-switcher {
+                height: 100%;
+                align-content: end;
+                a {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
 }

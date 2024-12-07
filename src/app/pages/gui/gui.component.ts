@@ -4,8 +4,9 @@ import {
   HostListener,
   inject,
   signal,
+  ViewChild,
 } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
+import { AppTheme, ThemeService } from '../../services/theme.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { IntroComponent } from './components/intro/intro.component';
@@ -19,29 +20,49 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSidenavContainer, MatSidenavModule} from '@angular/material/sidenav';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule, TooltipPosition} from '@angular/material/tooltip';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-gui',
   standalone: true,
   imports: [
+    RouterLink,
     FormsModule,
     HeaderComponent,
     IntroComponent,
     AboutMeComponent,
     MatButtonModule,
     MatSidenavModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDividerModule,
   ],
   templateUrl: './gui.component.html',
   styleUrl: './gui.component.scss',
 })
 export class GuiComponent {
   isSmallScreen = signal(false);
+  navLinks = signal([
+    { label: '.aboutMe()', fragment: 'about-me', display: true },
+    { label: '.experience()', fragment: 'experience', display: true },
+    { label: '.projects()', fragment: 'projects', display: true },
+    { label: '.education()', fragment: 'education', display: true },
+    { label: '.contact()', fragment: 'contact', display: true },
+    { label: '.blog()', fragment: 'blog', display: false },
+    { label: '.certificates()', fragment: 'certificates', display: false },
+    { label: '.services()', fragment: 'services', display: false },
+  ]);
+  isDarkMode = signal(false);
 
   constructor(private themeService: ThemeService, private dialog: MatDialog) {
     this.themeService.initTheme('gui');
     this.themeService.removeTheme('terminal');
     this.isSmallScreen.set(window.innerWidth <= 768);
+    this.isDarkMode.set(this.themeService.isDarkMode('gui'));
   }
 
   @HostListener('window:resize', ['$event'])
@@ -53,6 +74,16 @@ export class GuiComponent {
 
   ngOnInit() {
     this.dialog.open(PortfolioWorkInProgressDialog);
+  }
+
+  get currentIcon(): string {
+    return !this.isDarkMode() ? 'dark_mode' : 'light_mode';
+  }
+  
+  toggleTheme(): void {
+    this.isDarkMode.set(!this.isDarkMode());
+    this.themeService.setTheme('gui', this.isDarkMode() ? 
+      AppTheme.GUI_DARK : AppTheme.GUI_LIGHT);
   }
 }
 

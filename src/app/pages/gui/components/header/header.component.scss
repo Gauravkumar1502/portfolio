@@ -49,10 +49,6 @@ header > mat-toolbar {
             cursor: pointer;
             color: var(--sys-primary);
             transition: all 0.5s ease-in-out;
-            &:hover, &:focus {
-                transform: rotateY(180deg);
-                scale: 1.2;
-            }
         }
         li > a {
             font-size: clamp(16px, 1.5vw, 22px);

@@ -1,6 +1,8 @@
 <mat-drawer-container>
   <section>
-    <app-header [drawer]="drawer" [isSmallScreen]="isSmallScreen()" />
+    <app-header [drawer]="drawer" 
+      [isSmallScreen]="isSmallScreen()" 
+      [navLinks]="navLinks()"/>
     <main>
       <!-- <button [routerLink]="'/terminal-portfolio'">Switch to CLI</button> -->
       <app-intro />
@@ -8,7 +10,28 @@
     </main>
   </section>
   <mat-drawer #drawer class="sidenav" mode="over" position="end">
-    <p>Auto-resizing sidenav</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor suscipit accumsan.</p>
+    <nav>
+      <div class="drawer-header">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <ul>
+        @for (navLink of navLinks(); track $index) {
+            <!-- @if (navLink.display) { -->
+                <li><a routerLink="." [fragment]="navLink.fragment" (click)="drawer.toggle()">
+                  {{ navLink.label }}
+                </a></li>
+            <!-- } -->
+        }
+        <li class="theme-switcher" >
+            <a (click)="toggleTheme();" matTooltipPosition="above"
+              matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme">
+                .switchTo(<mat-icon [fontIcon]="currentIcon" />)
+            </a>
+        </li>
+      </ul>
+    </nav>  
   </mat-drawer>
 </mat-drawer-container>

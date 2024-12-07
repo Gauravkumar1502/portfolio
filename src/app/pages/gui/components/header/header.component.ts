@@ -27,6 +27,7 @@ interface SocialLink {
 export class HeaderComponent {
   drawer = input.required<MatDrawer>();
   isSmallScreen = input.required<boolean>();
+  navLinks = input.required<{ label: string, fragment: string, display: boolean }[]>();
 
   isDarkMode = signal(false);
   positions = Positions;

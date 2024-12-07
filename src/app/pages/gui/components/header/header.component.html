@@ -10,15 +10,24 @@
             </button>
             } @else {
                 <ul>
-                    <li><a routerLink="." fragment="about-me">.aboutMe()</a></li>
+                    @for (navLink of navLinks(); track $index) {
+                        @if (navLink.display) {
+                            <li>
+                                <a routerLink="." [fragment]="navLink.fragment" (click)="drawer().toggle()">
+                                    {{ navLink.label }}
+                                </a>
+                            </li>
+                        }
+                    }
+                    <!-- <li><a routerLink="." fragment="about-me">.aboutMe()</a></li>
                     <li><a href="">.experience()</a></li>
                     <li><a href="">.projects()</a></li>
                     <li><a href="">.education()</a></li>
-                    <!-- <li><a href="#">.services()</a></li>
-                            <li><a href="#">.blogs()</a></li> -->
+                    <li><a href="#">.services()</a></li>
+                    <li><a href="#">.blogs()</a></li>
                     <li><a href="">.contact()</a></li>
-                    <!-- <li><a href="#">.certificates()</a></li>
-                        <li><a href="#">.resume()</a></li> -->
+                    <li><a href="#">.certificates()</a></li>
+                    <li><a href="#">.resume()</a></li> -->
                     <li class="theme-switcher" (click)="toggleTheme()">
                         <mat-icon matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme" matTooltipPosition="below"
                             [fontIcon]="currentIcon"></mat-icon>
