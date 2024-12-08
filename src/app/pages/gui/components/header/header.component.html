@@ -13,7 +13,7 @@
                     @for (navLink of navLinks(); track $index) {
                         @if (navLink.display) {
                             <li>
-                                <a routerLink="." [fragment]="navLink.fragment" (click)="drawer().toggle()">
+                                <a routerLink="." [fragment]="navLink.fragment">
                                     {{ navLink.label }}
                                 </a>
                             </li>
