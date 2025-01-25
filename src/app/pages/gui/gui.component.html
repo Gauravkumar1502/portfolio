@@ -1,16 +1,24 @@
-<mat-drawer-container>
+<mat-sidenav-container>
   <section>
-    <app-header [drawer]="drawer" 
+    <app-header
+      [drawer]="drawer"
       [isSmallScreen]="isSmallScreen()"
       [isDarkMode]="isDarkMode()"
       [navLinks]="navLinks()"
-      (themeToggled)="toggleTheme($event)"/>
+      (themeToggled)="toggleTheme($event)"
+    />
     <main>
       <app-intro />
-      <app-about-me id="about-me"/>
+      <app-about-me id="about-me" />
     </main>
   </section>
-  <mat-drawer #drawer class="sidenav" mode="over" position="end">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    mode="over"
+    position="end"
+    fixedInViewport="true"
+  >
     <nav>
       <div class="drawer-header">
         <button mat-icon-button (click)="drawer.toggle()">
@@ -20,20 +28,28 @@
       <mat-divider></mat-divider>
       <ul>
         @for (navLink of navLinks(); track $index) {
-            <!-- @if (navLink.display) { -->
-                <li><a routerLink="." [fragment]="navLink.fragment" (click)="drawer.toggle()">
-                  {{ navLink.label }}
-                </a></li>
-            <!-- } -->
+        <!-- @if (navLink.display) { -->
+        <li>
+          <a
+            routerLink="."
+            [fragment]="navLink.fragment"
+            (click)="drawer.toggle()"
+          >
+            {{ navLink.label }}
+          </a>
+        </li>
+        <!-- } -->
         }
         <li class="theme-switcher">
-            <a (click)="toggleTheme(!isDarkMode())" 
-              matTooltipPosition="above"
-              matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme">
-                .switchTo(<mat-icon [fontIcon]="currentIcon" />)
-            </a>
+          <a
+            (click)="toggleTheme(!isDarkMode())"
+            matTooltipPosition="above"
+            matTooltip="Switch To {{ isDarkMode() ? 'Light' : 'Dark' }} Theme"
+          >
+            .switchTo(<mat-icon [fontIcon]="currentIcon" />)
+          </a>
         </li>
       </ul>
-    </nav>  
-  </mat-drawer>
-</mat-drawer-container>
+    </nav>
+  </mat-sidenav>
+</mat-sidenav-container>
